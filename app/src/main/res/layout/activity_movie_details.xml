@@ -82,13 +82,113 @@
     </TextView>
 
     <ImageView
+        android:id="@+id/StarEnable0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_star_icon"
         android:layout_marginTop="9dp"
-        android:layout_marginLeft="18dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewTag">
+        app:layout_constraintTop_toBottomOf="@id/textViewTag"
+        app:tint="@color/enableStar">
     </ImageView>
+
+    <ImageView
+        android:id="@+id/StarEnable1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_star_icon"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintStart_toEndOf="@id/StarEnable0"
+        app:layout_constraintTop_toBottomOf="@id/textViewTag"
+        app:tint="@color/enableStar">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/StarEnable2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_star_icon"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintStart_toEndOf="@id/StarEnable1"
+        app:layout_constraintTop_toBottomOf="@id/textViewTag"
+        app:tint="@color/enableStar">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/StarEnable3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_star_icon"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintStart_toEndOf="@id/StarEnable2"
+        app:layout_constraintTop_toBottomOf="@id/textViewTag"
+        app:tint="@color/enableStar">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/StarDisable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_star_icon"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintStart_toEndOf="@id/StarEnable3"
+        app:layout_constraintTop_toBottomOf="@id/textViewTag"
+        app:tint="@color/disableStar">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textViewReview"
+        android:layout_width="112dp"
+        android:layout_height="20dp"
+        android:text="125 REVIEWS"
+        android:textFontWeight="900"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toEndOf="@id/StarDisable"
+        app:layout_constraintTop_toBottomOf="@id/textViewTag"
+        android:textColor="@color/disableStar">
+    </TextView>
+<!--    <ImageView-->
+<!--        android:id="@+id/StarDisable2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:srcCompat="@drawable/ic_star_icon"-->
+<!--        android:layout_marginTop="9dp"-->
+<!--        android:layout_marginLeft="3dp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/StarDisable1"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/textViewTag"-->
+<!--        app:tint="@color/enableStar">-->
+<!--    </ImageView>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/StarDisable3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:srcCompat="@drawable/ic_star_icon"-->
+<!--        android:layout_marginTop="9dp"-->
+<!--        android:layout_marginLeft="3dp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/StarDisable3"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/textViewTag"-->
+<!--        app:tint="@color/enableStar">-->
+<!--    </ImageView>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/StarEnable"-->
+<!--        android:layout_width="13dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:srcCompat="@drawable/ic_star_icon"-->
+<!--        android:layout_marginTop="9dp"-->
+<!--        android:layout_marginLeft="3dp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/StarDisable3"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/textViewTag"-->
+<!--        app:tint="@color/enableStar">-->
+<!--    </ImageView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

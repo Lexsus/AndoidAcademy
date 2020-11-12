@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#191926</color>
     <color name="tagColor">#FF3466</color>
+    <color name="enableStar">#FF3365</color>
+    <color name="disableStar">#6D6D80</color>
 </resources>
