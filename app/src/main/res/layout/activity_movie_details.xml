@@ -4,13 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MovieDetailsActivity">
-
     <ImageView
         android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/orig"
+        android:scaleType="centerCrop"
+
+        />
+
+    <ImageView
+        android:id="@+id/path"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/orig"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="53dp" />
+        app:srcCompat="@drawable/Path"
+        android:layout_marginTop="59dp"
+        android:layout_marginLeft="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_marginTop="56dp"
+        android:layout_marginLeft="18dp"
+        app:layout_constraintStart_toStartOf="@+id/path"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white">
+    </TextView>
+
+    <TextView
+        android:layout_width="343dp"
+        android:layout_height="80dp"
+        android:text="13+"
+        android:layout_marginTop="226dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintStart_toStartOf="@+id/path"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Avangers:\nEndGame"
+        android:textFontWeight="900"
+        android:textSize="40sp"
+        android:layout_marginTop="254dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textViewTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Action, Adventure, Fantasy"
+        android:textFontWeight="300"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewName"
+        android:textColor="@color/tagColor">
+    </TextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_star_icon"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTag">
+    </ImageView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
