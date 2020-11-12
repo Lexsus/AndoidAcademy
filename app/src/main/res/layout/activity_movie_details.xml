@@ -155,40 +155,21 @@
         app:layout_constraintTop_toBottomOf="@id/textViewTag"
         android:textColor="@color/disableStar">
     </TextView>
-<!--    <ImageView-->
-<!--        android:id="@+id/StarDisable2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:srcCompat="@drawable/ic_star_icon"-->
-<!--        android:layout_marginTop="9dp"-->
-<!--        android:layout_marginLeft="3dp"-->
-<!--        app:layout_constraintStart_toEndOf="@id/StarDisable1"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/textViewTag"-->
-<!--        app:tint="@color/enableStar">-->
-<!--    </ImageView>-->
 
-<!--    <ImageView-->
-<!--        android:id="@+id/StarDisable3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:srcCompat="@drawable/ic_star_icon"-->
-<!--        android:layout_marginTop="9dp"-->
-<!--        android:layout_marginLeft="3dp"-->
-<!--        app:layout_constraintStart_toEndOf="@id/StarDisable3"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/textViewTag"-->
-<!--        app:tint="@color/enableStar">-->
-<!--    </ImageView>-->
+    <TextView
+        android:id="@+id/textViewStoryline"
+        android:layout_width="343dp"
+        android:layout_height="20dp"
+        android:text="Storyline"
+        android:textFontWeight="900"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewReview"
+        android:textColor="@color/white">
+    </TextView>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/StarEnable"-->
-<!--        android:layout_width="13dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:srcCompat="@drawable/ic_star_icon"-->
-<!--        android:layout_marginTop="9dp"-->
-<!--        android:layout_marginLeft="3dp"-->
-<!--        app:layout_constraintStart_toEndOf="@id/StarDisable3"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/textViewTag"-->
-<!--        app:tint="@color/enableStar">-->
-<!--    </ImageView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
