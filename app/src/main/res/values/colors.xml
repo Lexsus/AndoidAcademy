@@ -11,4 +11,6 @@
     <color name="tagColor">#FF3466</color>
     <color name="enableStar">#FF3365</color>
     <color name="disableStar">#6D6D80</color>
+    <color name="devastating">#ECECEC</color>
+    <color name="cast">#D8D8D8</color>
 </resources>
