@@ -15,4 +15,5 @@
     <string name="Evans_cast">Chris Evans</string>
     <string name="Ruffalo_cast">Mark Ruffalo</string>
     <string name="Hemswort_cast">Chris Hemsworth</string>
+    <string name="fragment_actors_avatar_content_description">Actor avatar</string>
 </resources>
