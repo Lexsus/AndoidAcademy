@@ -14,7 +14,7 @@ class ActorAdapter: RecyclerView.Adapter<ActorsViewHolder>() {
     private var actors = listOf<Actor>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorsViewHolder {
         return ActorsViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_actors_data, parent, false))
+                .inflate(R.layout.view_holder_actor, parent, false))
     }
 
     override fun onBindViewHolder(holder: ActorsViewHolder, position: Int) {

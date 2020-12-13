@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 
-class MainActivity : AppCompatActivity(), FragmentMovieList.ClickListener{
+class MainActivity : AppCompatActivity()/*, FragmentMovieList.ClickListener*/{
 
     private  var fragmentMovieDetails:FragmentMovieDetails?=null
     private  var fragmentMovieList: FragmentMovieList?=null
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), FragmentMovieList.ClickListener{
         }
     }
 
-    override fun nextfragment() {
+     fun nextfragment() {
         Log.d("MainActivity","nextfragment")
         //перреход в новый фрагмент
         supportFragmentManager.beginTransaction()
