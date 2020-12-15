@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 //TODO разобраться со сдвигом RV от CAST
 //TODO 13+ сделать по figma
 class ActorAdapter: RecyclerView.Adapter<ActorsViewHolder>() {
-    private var actors = listOf<Actor>()
+    private var actors = listOf<ActorMy>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorsViewHolder {
         return ActorsViewHolder(LayoutInflater.from(parent.context)
                 .inflate(R.layout.view_holder_actor, parent, false))
@@ -23,7 +23,7 @@ class ActorAdapter: RecyclerView.Adapter<ActorsViewHolder>() {
 
     override fun getItemCount(): Int = actors.size
 
-    fun bindActors(newActors: List<Actor>) {
+    fun bindActors(newActors: List<ActorMy>) {
         actors = newActors
         notifyDataSetChanged()
     }
@@ -34,7 +34,7 @@ class ActorsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private val avatar: ImageView = itemView.findViewById(R.id.iv_actor_avatar)
     private val name: TextView = itemView.findViewById(R.id.tv_actor_name)
 
-    fun onBind(actor: Actor) {
+    fun onBind(actor: ActorMy) {
         val uri = actor.avatar
         val imageResource: Int = context.resources.getIdentifier(uri, null, context.packageName)
 
