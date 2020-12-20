@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import ru.lucass.data.Movie
 
-class FilmAdapter(private val clickListener: OnRecyclerItemClicked) : RecyclerView.Adapter<FilmsViewHolder>() {
+class MovieAdapter(private val clickListener: OnRecyclerItemClicked) : RecyclerView.Adapter<FilmsViewHolder>() {
     private var movies = listOf<Movie>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsViewHolder {
         return FilmsViewHolder(
@@ -38,8 +38,9 @@ class FilmAdapter(private val clickListener: OnRecyclerItemClicked) : RecyclerVi
 class FilmsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     private val avatar: ImageView = itemView.findViewById(R.id.iv_film_avatar)
-    private val PG: TextView = itemView.findViewById(R.id.tv_PG)
+    private val PG: TextView = itemView.findViewById(R.id.tv_PG_Movie)
     private val filmName: TextView = itemView.findViewById(R.id.tv_FilmName)
+    private val TagMovie: TextView = itemView.findViewById(R.id.tv_TagMovie)
 
     fun onBind(film: Movie) {
 //        val uri = film.avatar
@@ -49,19 +50,20 @@ class FilmsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 //        avatar.setImageDrawable(res)
         //PG.text = context.getString(film.nameRes)
         Glide.with(context)
-                .load(film.backdrop)
+                .load(film.poster)
                 .apply(imageOption)
                 .into(avatar)
 
-        PG.text = film.minimumAge.toString()
+        PG.text = film.minimumAge.toString()+"+"
         filmName.text = film.title
+        TagMovie.text = film.genres.joinToString { it -> it.name }
     }
 
     companion object {
         private val imageOption = RequestOptions()
                 .placeholder(R.drawable.ic_avatar_placeholder)
                 .fallback(R.drawable.ic_avatar_placeholder)
-                .circleCrop()
+                //.circleCrop()
     }
 }
 

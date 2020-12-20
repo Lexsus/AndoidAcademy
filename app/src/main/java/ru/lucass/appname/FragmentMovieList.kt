@@ -9,9 +9,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import ru.lucass.data.Movie
 import ru.lucass.data.loadMovies
 
@@ -22,6 +20,7 @@ class FragmentMovieList: Fragment() {
     private var recycler: RecyclerView? = null
     private lateinit var  movies:List<Movie>
     private val scope = CoroutineScope(Dispatchers.IO)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,31 +31,31 @@ class FragmentMovieList: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recycler = view.findViewById(R.id.rv_films)
-        recycler?.adapter = FilmAdapter(clickListener)
+        recycler?.adapter = MovieAdapter(clickListener)
         scope.launch { context?.let {
             movies = loadMovies(it) }
+            withContext (Dispatchers.Main) {
+                //update the UI
+                updateData()
+            }
         }
     }
 
     override fun onStart() {
         super.onStart()
 
-        updateData()
+
     }
 
     private fun updateData() {
 
-        (recycler?.adapter as? FilmAdapter)?.apply {
+        (recycler?.adapter as? MovieAdapter)?.apply {
             bindFilms(movies)
         }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-//        if (context is ClickListener)
-//        {
-//            listener = context;
-//        }
     }
 
     override fun onDetach() {
@@ -71,20 +70,16 @@ class FragmentMovieList: Fragment() {
         }
     }
 
-    private fun doOnClick(film: Movie) {
+    private fun doOnClick(movie: Movie) {
         recycler?.let { rv ->
             Snackbar.make(
                     rv,
-                    getString(R.string.fragment_films_chosen_text, film.title),
+                    getString(R.string.fragment_films_chosen_text, movie.title),
                     Snackbar.LENGTH_SHORT)
                     .show()
         }
-        (activity as MainActivity?)?.nextfragment()
+        (activity as MainActivity?)?.nextfragment(movie)
     }
-//    interface ClickListener {
-//        fun nextfragment()
-//    }
-
 
     companion object {
         fun newInstance(

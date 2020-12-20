@@ -21,7 +21,7 @@
     <TextView
         android:id="@+id/tv_actor_name"
         android:layout_width="80dp"
-        android:layout_height="30dp"
+        android:layout_height="34dp"
         android:layout_margin="8dp"
         android:textStyle="normal"
         android:textFontWeight="900"

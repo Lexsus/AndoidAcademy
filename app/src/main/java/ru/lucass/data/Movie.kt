@@ -1,8 +1,10 @@
 package ru.lucass.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import ru.lucass.data.Actor
 import ru.lucass.data.Genre
-
+@Parcelize
 data class Movie(
         val id: Int,
         val title: String,
@@ -15,4 +17,4 @@ data class Movie(
         val runtime: Int,
         val genres: List<Genre>,
         val actors: List<Actor>
-)
+) : Parcelable

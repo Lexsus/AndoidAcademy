@@ -7,6 +7,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import ru.lucass.data.Movie
 
 class MainActivity : AppCompatActivity()/*, FragmentMovieList.ClickListener*/{
 
@@ -35,14 +36,14 @@ class MainActivity : AppCompatActivity()/*, FragmentMovieList.ClickListener*/{
         }
     }
 
-     fun nextfragment() {
+     fun nextfragment(movie:Movie) {
         Log.d("MainActivity","nextfragment")
         //перреход в новый фрагмент
         supportFragmentManager.beginTransaction()
             .apply {
                 replace(
                     R.id.container,
-                    FragmentMovieDetails.newInstance(),
+                    FragmentMovieDetails.newInstance(movie),
                     FRAGMENT_DETAIL_TAG
                     )
                 addToBackStack(null)

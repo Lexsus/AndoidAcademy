@@ -4,18 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".MovieDetailsActivity">
+    android:background="@color/background">
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_BackGround"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="298dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/orig"
-        android:scaleType="centerCrop"
-
         />
 
     <ImageView
@@ -45,15 +42,15 @@
         android:layout_height="16dp"
         android:text="13+"
         android:id="@+id/PG"
-        android:layout_marginTop="126dp"
+        android:layout_marginTop="157dp"
         android:layout_marginLeft="16dp"
-        app:layout_constraintStart_toStartOf="@+id/path"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/path"
         android:textColor="@color/white">
     </TextView>
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Avangers:\nEndGame"
@@ -78,7 +75,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewName"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
         android:textColor="@color/tagColor">
     </TextView>
 
@@ -173,7 +170,7 @@
     </TextView>
 
     <TextView
-        android:id="@+id/textViewDevastating"
+        android:id="@+id/textViewDevastate"
         android:layout_width="343dp"
         android:layout_height="100dp"
         android:text="@string/devastating"
@@ -200,7 +197,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewDevastating"
+        app:layout_constraintTop_toBottomOf="@id/textViewDevastate"
         android:textColor="@color/devastating">
     </TextView>
 
