@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
@@ -18,8 +21,10 @@ class FragmentMovieList: Fragment() {
 //    private var listener: ClickListener? = null
     private var imageMovie: ImageView? = null
     private var recycler: RecyclerView? = null
-    private lateinit var  movies:List<Movie>
+//    private lateinit var  movies:List<Movie>
     private val scope = CoroutineScope(Dispatchers.IO)
+    private var viewModel: MovieModelView? = null
+    private var liveData: LiveData<List<Movie>>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,16 +34,19 @@ class FragmentMovieList: Fragment() {
         return inflater.inflate(R.layout.fragment_movies_list, container, false)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(MovieModelView::class.java)
+        liveData = viewModel?.mutableMovie
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recycler = view.findViewById(R.id.rv_films)
         recycler?.adapter = MovieAdapter(clickListener)
-        scope.launch { context?.let {
-            movies = loadMovies(it) }
-            withContext (Dispatchers.Main) {
-                //update the UI
-                updateData()
-            }
-        }
+
+        viewModel?.mutableMovie?.observe(this.viewLifecycleOwner, Observer<List<Movie>> {
+            updateData(it)
+        })
     }
 
     override fun onStart() {
@@ -47,7 +55,7 @@ class FragmentMovieList: Fragment() {
 
     }
 
-    private fun updateData() {
+    private fun updateData(movies:List<Movie>) {
 
         (recycler?.adapter as? MovieAdapter)?.apply {
             bindFilms(movies)
