@@ -4,18 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".MovieDetailsActivity">
+    android:background="@color/background">
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_BackGround"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="298dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/orig"
-        android:scaleType="centerCrop"
-
         />
 
     <ImageView
@@ -41,28 +38,29 @@
     </TextView>
 
     <TextView
-        android:layout_width="343dp"
-        android:layout_height="80dp"
+        android:layout_width="24dp"
+        android:layout_height="16dp"
         android:text="13+"
-        android:layout_marginTop="226dp"
+        android:id="@+id/PG"
+        android:layout_marginTop="157dp"
         android:layout_marginLeft="16dp"
-        app:layout_constraintStart_toStartOf="@+id/path"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/path"
         android:textColor="@color/white">
     </TextView>
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Avangers:\nEndGame"
         android:textFontWeight="900"
         android:textSize="40sp"
-        android:layout_marginTop="254dp"
+        android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PG"
         android:textColor="@color/white">
     </TextView>
 
@@ -77,7 +75,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewName"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
         android:textColor="@color/tagColor">
     </TextView>
 
@@ -172,7 +170,7 @@
     </TextView>
 
     <TextView
-        android:id="@+id/textViewDevastating"
+        android:id="@+id/textViewDevastate"
         android:layout_width="343dp"
         android:layout_height="100dp"
         android:text="@string/devastating"
@@ -195,115 +193,127 @@
         android:textFontWeight="900"
         android:textSize="14sp"
         android:lineHeight="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewDevastating"
+        app:layout_constraintTop_toBottomOf="@id/textViewDevastate"
         android:textColor="@color/devastating">
     </TextView>
 
-    <ImageView
-        android:id="@+id/DowneyJr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/downey_jr"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewCast"
-        app:layout_constraintStart_toStartOf="parent">
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/Evans"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/evans"
-        android:layout_marginTop="7dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_actors"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewCast"
-        app:layout_constraintStart_toEndOf="@id/DowneyJr">
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/Ruffalo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ruffalo"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewCast"
-        app:layout_constraintStart_toEndOf="@id/Evans">
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/Hemsworth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/hemsworth"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewCast"
-        app:layout_constraintStart_toEndOf="@id/Ruffalo">
-    </ImageView>
-
-    <TextView
-        android:id="@+id/textViewDouneyJr"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:text="@string/Doyney_cast"
-        android:textFontWeight="900"
-        android:textSize="12sp"
-        android:lineHeight="20dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCast"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/DowneyJr"
-        android:textColor="@color/cast">
-    </TextView>
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
-    <TextView
-        android:id="@+id/textViewEvans"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:text="@string/Evans_cast"
-        android:textFontWeight="900"
-        android:textSize="12sp"
-        android:lineHeight="20dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintStart_toEndOf="@+id/textViewDouneyJr"
-        app:layout_constraintTop_toBottomOf="@id/Evans"
-        android:textColor="@color/cast">
-    </TextView>
+<!--    <ImageView-->
+<!--        android:id="@+id/DowneyJr"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/downey_jr"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/textViewCast"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+<!--    </ImageView>-->
 
-    <TextView
-        android:id="@+id/textViewRuffalo"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:text="@string/Ruffalo_cast"
-        android:textFontWeight="900"
-        android:textSize="12sp"
-        android:lineHeight="20dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintStart_toEndOf="@+id/textViewEvans"
-        app:layout_constraintTop_toBottomOf="@id/Ruffalo"
-        android:textColor="@color/cast">
-    </TextView>
+<!--    <ImageView-->
+<!--        android:id="@+id/Evans"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/evans"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/textViewCast"-->
+<!--        app:layout_constraintStart_toEndOf="@id/DowneyJr">-->
+<!--    </ImageView>-->
 
-    <TextView
-        android:id="@+id/textViewHamsworth"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:text="@string/Hemswort_cast"
-        android:textFontWeight="900"
-        android:textSize="12sp"
-        android:lineHeight="20dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintStart_toEndOf="@+id/textViewRuffalo"
-        app:layout_constraintTop_toBottomOf="@id/Hemsworth"
-        android:textColor="@color/cast">
-    </TextView>
+<!--    <ImageView-->
+<!--        android:id="@+id/Ruffalo"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/ruffalo"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/textViewCast"-->
+<!--        app:layout_constraintStart_toEndOf="@id/Evans">-->
+<!--    </ImageView>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/Hemsworth"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/hemsworth"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/textViewCast"-->
+<!--        app:layout_constraintStart_toEndOf="@id/Ruffalo">-->
+<!--    </ImageView>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textViewDouneyJr"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:text="@string/Doyney_cast"-->
+<!--        android:textFontWeight="900"-->
+<!--        android:textSize="12sp"-->
+<!--        android:lineHeight="20dp"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/DowneyJr"-->
+<!--        android:textColor="@color/cast">-->
+<!--    </TextView>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textViewEvans"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:text="@string/Evans_cast"-->
+<!--        android:textFontWeight="900"-->
+<!--        android:textSize="12sp"-->
+<!--        android:lineHeight="20dp"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textViewDouneyJr"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/Evans"-->
+<!--        android:textColor="@color/cast">-->
+<!--    </TextView>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textViewRuffalo"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:text="@string/Ruffalo_cast"-->
+<!--        android:textFontWeight="900"-->
+<!--        android:textSize="12sp"-->
+<!--        android:lineHeight="20dp"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textViewEvans"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/Ruffalo"-->
+<!--        android:textColor="@color/cast">-->
+<!--    </TextView>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textViewHamsworth"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:text="@string/Hemswort_cast"-->
+<!--        android:textFontWeight="900"-->
+<!--        android:textSize="12sp"-->
+<!--        android:lineHeight="20dp"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textViewRuffalo"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/Hemsworth"-->
+<!--        android:textColor="@color/cast">-->
+<!--    </TextView>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

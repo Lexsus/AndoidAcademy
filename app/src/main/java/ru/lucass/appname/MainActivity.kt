@@ -1,23 +1,54 @@
 package ru.lucass.appname
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import ru.lucass.data.Movie
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()/*, FragmentMovieList.ClickListener*/{
+
+    private  var fragmentMovieDetails:FragmentMovieDetails?=null
+    private  var fragmentMovieList: FragmentMovieList?=null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_details)
-        setSupportActionBar(findViewById(R.id.toolbar))
+        setContentView(R.layout.activity_main)
+        if (savedInstanceState==null)
+        {
+            supportFragmentManager.beginTransaction()
+                .apply {
+                    add(R.id.container,
+                        FragmentMovieList.newInstance(),
+                        FRAGMENT_MOVIE_TAG)
+                    commit()
+                }
+        }
+        else
+        {
+            fragmentMovieList = supportFragmentManager.findFragmentByTag(FRAGMENT_MOVIE_TAG) as?  FragmentMovieList
+            fragmentMovieDetails = supportFragmentManager.findFragmentByTag(FRAGMENT_DETAIL_TAG) as?  FragmentMovieDetails
+            Log.d("","fragment create");
+        }
+    }
 
-//        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show()
-//        }
+     fun nextfragment(movie:Movie) {
+        Log.d("MainActivity","nextfragment")
+        //перреход в новый фрагмент
+        supportFragmentManager.beginTransaction()
+            .apply {
+                replace(
+                    R.id.container,
+                    FragmentMovieDetails.newInstance(movie),
+                    FRAGMENT_DETAIL_TAG
+                    )
+                addToBackStack(null)
+                commit()
+            }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -34,5 +65,10 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    companion object{
+        const val FRAGMENT_MOVIE_TAG="MovieListFragment"
+        const val FRAGMENT_DETAIL_TAG="MovieDetailFragment"
     }
 }
