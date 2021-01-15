@@ -14,14 +14,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 import ru.lucass.data.Movie
-import ru.lucass.data.loadMovies
 
-
-class FragmentMovieList: Fragment() {
-//    private var listener: ClickListener? = null
+class FragmentMovieList : Fragment() {
+    //    private var listener: ClickListener? = null
     private var imageMovie: ImageView? = null
     private var recycler: RecyclerView? = null
-//    private lateinit var  movies:List<Movie>
+
+    //    private lateinit var  movies:List<Movie>
     private val scope = CoroutineScope(Dispatchers.IO)
     private var viewModel: MovieModelView? = null
     private var liveData: LiveData<List<Movie>>? = null
@@ -55,7 +54,7 @@ class FragmentMovieList: Fragment() {
 
     }
 
-    private fun updateData(movies:List<Movie>) {
+    private fun updateData(movies: List<Movie>) {
 
         (recycler?.adapter as? MovieAdapter)?.apply {
             bindFilms(movies)
@@ -81,10 +80,11 @@ class FragmentMovieList: Fragment() {
     private fun doOnClick(movie: Movie) {
         recycler?.let { rv ->
             Snackbar.make(
-                    rv,
-                    getString(R.string.fragment_films_chosen_text, movie.title),
-                    Snackbar.LENGTH_SHORT)
-                    .show()
+                rv,
+                getString(R.string.fragment_films_chosen_text, movie.title),
+                Snackbar.LENGTH_SHORT
+            )
+                .show()
         }
         (activity as MainActivity?)?.nextfragment(movie)
     }

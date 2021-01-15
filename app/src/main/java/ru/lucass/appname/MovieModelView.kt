@@ -5,11 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import ru.lucass.appname.repository.NetworkModule
 import ru.lucass.data.Movie
-import ru.lucass.data.loadMovies
 
 class MovieModelView : ViewModel() {
-    private val _mutableMovieList = MutableLiveData<List<Movie>>();
+    val networkModule = NetworkModule()
+    private val _mutableMovieList = MutableLiveData<List<Movie>>()
     val mutableMovie: LiveData<List<Movie>>
         get() {
             loadData()
@@ -21,38 +22,11 @@ class MovieModelView : ViewModel() {
 
     fun loadData() {
         viewModelScope.launch {
-            _mutableMovieList.value = loadMovies(MovieApplication.getInstance())
+            _mutableMovieList.value = networkModule.loadMovies()
         }
     }
 
     fun loadMovie(movie: Movie) {
-//        viewModelScope.launch {
-//            movie = loadMovies(MyApplication.getInstance()).first { movie -> movie.id == id }
         _mutableMovieDetail.value = movie;
-        //          bind()
-//        }
-
     }
-
-//    fun getData(): LiveData<List<Movie>> {
-//        loadData()
-//        return mutableMovie
-//    }
-
-//    fun getLiveDataDetails(): LiveData<Movie> {
-//        return _mutableMovieDetail
-//    }
-
-
-//    fun addNew() {
-//        viewModelScope.launch {
-//
-//
-//
-//
-//
-//        }
-//    }
-
-
 }
