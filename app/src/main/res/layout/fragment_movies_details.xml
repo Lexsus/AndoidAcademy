@@ -8,8 +8,9 @@
 
     <ImageView
         android:id="@+id/iv_background"
-        android:layout_width="match_parent"
-        android:layout_height="298dp"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,8 +38,8 @@
 
     <TextView
         android:id="@+id/age_rating_details"
-        android:layout_width="24dp"
-        android:layout_height="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="157dp"
         android:text="13+"
@@ -48,11 +49,15 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="0sp"
         android:text="@string/fragment_details_title"
         android:textColor="@color/white"
         android:textFontWeight="900"
@@ -145,8 +150,8 @@
 
     <TextView
         android:id="@+id/tv_story_line"
-        android:layout_width="343dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="16dp"
@@ -159,8 +164,8 @@
 
     <TextView
         android:id="@+id/tv_devastate"
-        android:layout_width="343dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="16dp"
@@ -179,6 +184,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="8sp"
         android:lineHeight="20dp"
         android:text="@string/cast"
         android:textColor="@color/devastating"
