@@ -13,11 +13,15 @@ import ru.lucass.data.Actor
 
 //TODO разобраться со сдвигом RV от CAST
 //TODO 13+ сделать по figma
-class ActorAdapter: RecyclerView.Adapter<ActorsViewHolder>() {
+class ActorAdapter : RecyclerView.Adapter<ActorsViewHolder>() {
+
     private var actors = listOf<Actor>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorsViewHolder {
-        return ActorsViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.view_holder_actor, parent, false))
+        return ActorsViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.view_holder_actor, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ActorsViewHolder, position: Int) {
@@ -32,30 +36,24 @@ class ActorAdapter: RecyclerView.Adapter<ActorsViewHolder>() {
     }
 }
 
-class ActorsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class ActorsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val avatar: ImageView = itemView.findViewById(R.id.iv_actor_avatar)
     private val name: TextView = itemView.findViewById(R.id.tv_actor_name)
 
     fun onBind(actor: Actor) {
-//        val uri = actor.avatar
-//        val imageResource: Int = context.resources.getIdentifier(uri, null, context.packageName)
-//
-//        val res: Drawable = context.resources.getDrawable(imageResource,null)
-//        avatar.setImageDrawable(res)
-//        name.text = context.getString(actor.nameRes)
         Glide.with(context)
-                .load(actor.picture)
-                .apply(ActorsViewHolder.imageOption)
-                .into(avatar)
+            .load(actor.picture)
+            .apply(ActorsViewHolder.imageOption)
+            .into(avatar)
 
         name.text = actor.name
     }
 
     companion object {
         private val imageOption = RequestOptions()
-                .placeholder(R.drawable.ic_avatar_placeholder)
-                .fallback(R.drawable.ic_avatar_placeholder)
+            .placeholder(R.drawable.ic_avatar_placeholder)
+            .fallback(R.drawable.ic_avatar_placeholder)
 
     }
 }

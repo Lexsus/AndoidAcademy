@@ -1,93 +1,66 @@
 package ru.lucass.appname
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import ru.lucass.data.Movie
 
-class FragmentMovieDetails(movie:Movie): Fragment() {
-    private var recycler: RecyclerView? = null
-//    private var backGround: ImageView? = null
-    private val movieSelect = movie
-    private var viewModel: MovieModelView? = null
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_movies_details, container, false)
-    }
+private const val ARG_PARAM1 = "movie"
 
+class FragmentMovieDetails() : Fragment(R.layout.fragment_movies_details) {
+
+    private var recycler: RecyclerView? = null
+    private var movieSelect: Movie? = null
+    private val viewModel: MovieViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MovieModelView::class.java)
-        viewModel?.loadMovie(movieSelect)
+        arguments?.let {
+            movieSelect = it.getParcelable(ARG_PARAM1)
+        }
+        viewModel.loadMovie(movieSelect)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //super.onViewCreated(view, savedInstanceState)
+
         recycler = view.findViewById(R.id.rv_actors)
-        viewModel?.mutableMovieDetail?.observe(this.viewLifecycleOwner, Observer {
-            initRecycler(view,it)
+        viewModel.movieDetails.observe(viewLifecycleOwner, Observer {
+            updateData(view, it)
         })
         recycler?.adapter = ActorAdapter()
     }
 
-    private fun initRecycler(view: View,movie:Movie) {
-        val backGround:ImageView = view.findViewById(R.id.iv_BackGround)
-        val let = context?.let {
-            Glide.with(it)
-                .load(movie.backdrop)
-                .apply(imageOption)
-                .into(backGround)
-        }
-        val textViewPG = view.findViewById<TextView>(R.id.PG)
-        textViewPG.text = movie.minimumAge.toString()+"+"
-
-        val textViewDevastating:TextView = view.findViewById(R.id.textViewDevastate)
-        textViewDevastating.text = movie.overview
-
-        val textViewTitle:TextView = view.findViewById(R.id.textViewTitle)
-        textViewTitle.text = movie.title
-
-        val textViewTag:TextView = view.findViewById(R.id.textViewTag)
-        textViewTag.text = movie.genres.joinToString { it -> it.name }
+    private fun updateData(view: View, movie: Movie) {
+        val backGround: ImageView = view.findViewById(R.id.iv_background)
+        Glide.with(this)
+            .load(movie.backdrop)
+            .apply(GlideOption.imageOption)
+            .into(backGround)
+        view.findViewById<TextView>(R.id.age_rating_details)?.text = movie.minimumAge.toString() + "+"
+        view.findViewById<TextView>(R.id.tv_devastate)?.text = movie.overview
+        view.findViewById<TextView>(R.id.tv_title)?.text = movie.title
+        view.findViewById<TextView>(R.id.tv_tag)?.text =
+            movie.genres.joinToString { it -> it.name }
         (recycler?.adapter as? ActorAdapter)?.apply {
             bindActors(movie.actors)
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-
-//        updateData()
-    }
-
-    private fun updateData() {
-        (recycler?.adapter as? ActorAdapter)?.apply {
-            bindActors(movieSelect.actors)
-        }
-    }
     companion object {
-        fun newInstance(movie:Movie
-        ): FragmentMovieDetails {
-            return FragmentMovieDetails(movie)
-        }
+        fun newInstance(param1: Movie) =
+            FragmentMovieDetails().apply {
+                arguments = Bundle().apply {
+                    putParcelable(ARG_PARAM1, param1)
+                }
+            }
 
-        private val imageOption = RequestOptions()
-            .placeholder(R.drawable.ic_avatar_placeholder)
-            .fallback(R.drawable.ic_avatar_placeholder)
+//        private val imageOption = RequestOptions()
+//            .placeholder(R.drawable.ic_avatar_placeholder)
+//            .fallback(R.drawable.ic_avatar_placeholder)
     }
-
-
 }

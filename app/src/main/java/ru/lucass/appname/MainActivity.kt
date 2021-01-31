@@ -7,48 +7,38 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.commit
 import ru.lucass.data.Movie
 
-class MainActivity : AppCompatActivity()/*, FragmentMovieList.ClickListener*/{
+class MainActivity : AppCompatActivity(), Navigator {
 
-    private  var fragmentMovieDetails:FragmentMovieDetails?=null
-    private  var fragmentMovieList: FragmentMovieList?=null
+    private var fragmentMovieDetails: FragmentMovieDetails? = null
+    private var fragmentMovieList: FragmentMovieList? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (savedInstanceState==null)
-        {
-            supportFragmentManager.beginTransaction()
-                .apply {
-                    add(R.id.container,
-                        FragmentMovieList.newInstance(),
-                        FRAGMENT_MOVIE_TAG)
-                    commit()
-                }
-        }
-        else
-        {
-            fragmentMovieList = supportFragmentManager.findFragmentByTag(FRAGMENT_MOVIE_TAG) as?  FragmentMovieList
-            fragmentMovieDetails = supportFragmentManager.findFragmentByTag(FRAGMENT_DETAIL_TAG) as?  FragmentMovieDetails
-            Log.d("","fragment create");
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                add(R.id.container, FragmentMovieList.newInstance(), FRAGMENT_MOVIE_TAG)
+            }
+        } else {
+            fragmentMovieList =
+                supportFragmentManager.findFragmentByTag(FRAGMENT_MOVIE_TAG) as? FragmentMovieList
+            fragmentMovieDetails =
+                supportFragmentManager.findFragmentByTag(FRAGMENT_DETAIL_TAG) as? FragmentMovieDetails
+            Log.d("", "fragment create");
         }
     }
 
-     fun nextfragment(movie:Movie) {
-        Log.d("MainActivity","nextfragment")
+    override fun nextFragment(movie: Movie) {
+        Log.d("MainActivity", "nextFragment")
         //перреход в новый фрагмент
-        supportFragmentManager.beginTransaction()
-            .apply {
-                replace(
-                    R.id.container,
-                    FragmentMovieDetails.newInstance(movie),
-                    FRAGMENT_DETAIL_TAG
-                    )
-                addToBackStack(null)
-                commit()
-            }
+        supportFragmentManager.commit {
+            replace(R.id.container, FragmentMovieDetails.newInstance(movie), FRAGMENT_DETAIL_TAG)
+            addToBackStack(null)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -67,8 +57,8 @@ class MainActivity : AppCompatActivity()/*, FragmentMovieList.ClickListener*/{
         }
     }
 
-    companion object{
-        const val FRAGMENT_MOVIE_TAG="MovieListFragment"
-        const val FRAGMENT_DETAIL_TAG="MovieDetailFragment"
+    companion object {
+        const val FRAGMENT_MOVIE_TAG = "MovieListFragment"
+        const val FRAGMENT_DETAIL_TAG = "MovieDetailFragment"
     }
 }

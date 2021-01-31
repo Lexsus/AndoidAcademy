@@ -7,11 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#191926</color>
+    <color name="background_black">#191926</color>
     <color name="tagColor">#FF3466</color>
     <color name="enableStar">#FF3365</color>
     <color name="disableStar">#6D6D80</color>
     <color name="devastating">#ECECEC</color>
     <color name="cast">#D8D8D8</color>
-    <color name="color13_back">#191926</color>
+    <color name="holder_movie_background">#191926</color>
+    <color name="color_black_placeholder">#000</color>
+
 </resources>
