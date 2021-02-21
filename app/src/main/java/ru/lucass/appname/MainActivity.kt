@@ -12,8 +12,12 @@ import ru.lucass.data.Movie
 
 class MainActivity : AppCompatActivity(), Navigator {
 
-    private var fragmentMovieDetails: FragmentMovieDetails? = null
-    private var fragmentMovieList: FragmentMovieList? = null
+    private val fragmentMovieDetails by lazy{
+        supportFragmentManager.findFragmentByTag(FRAGMENT_DETAIL_TAG) as FragmentMovieDetails
+    }
+    private val fragmentMovieList by lazy{
+        supportFragmentManager.findFragmentByTag(FRAGMENT_MOVIE_TAG) as FragmentMovieList
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +28,10 @@ class MainActivity : AppCompatActivity(), Navigator {
                 add(R.id.container, FragmentMovieList.newInstance(), FRAGMENT_MOVIE_TAG)
             }
         } else {
-            fragmentMovieList =
-                supportFragmentManager.findFragmentByTag(FRAGMENT_MOVIE_TAG) as? FragmentMovieList
-            fragmentMovieDetails =
-                supportFragmentManager.findFragmentByTag(FRAGMENT_DETAIL_TAG) as? FragmentMovieDetails
+            
+
+        //    fragmentMovieDetails =
+        //        supportFragmentManager.findFragmentByTag(FRAGMENT_DETAIL_TAG) as? FragmentMovieDetails
             Log.d("", "fragment create");
         }
     }
