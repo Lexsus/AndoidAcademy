@@ -1,22 +1,41 @@
 package ru.lucass.appname
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.commit
+import ru.lucass.data.Movie
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Navigator {
+
+    private val fragmentMovieDetails by lazy {
+        supportFragmentManager.findFragmentByTag(FRAGMENT_DETAIL_TAG) as FragmentMovieDetails
+    }
+    private val fragmentMovieList by lazy {
+        supportFragmentManager.findFragmentByTag(FRAGMENT_MOVIE_TAG) as FragmentMovieList
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                add(R.id.container, FragmentMovieList.newInstance(), FRAGMENT_MOVIE_TAG)
+            }
+        }
+    }
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+    override fun nextFragment(movie: Movie) {
+        Log.d(TAG, "nextFragment")
+        //перреход в новый фрагмент
+        supportFragmentManager.commit {
+            replace(R.id.container, FragmentMovieDetails.newInstance(movie), FRAGMENT_DETAIL_TAG)
+            addToBackStack(null)
         }
     }
 
@@ -34,5 +53,11 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    companion object {
+        const val FRAGMENT_MOVIE_TAG = "MovieListFragment"
+        const val FRAGMENT_DETAIL_TAG = "MovieDetailFragment"
+        private const val TAG = "MainActivity"
     }
 }

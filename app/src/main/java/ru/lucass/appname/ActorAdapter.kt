@@ -1,0 +1,62 @@
+package ru.lucass.appname
+
+import android.graphics.drawable.Drawable
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import ru.lucass.data.Actor
+
+//TODO разобраться со сдвигом RV от CAST
+//TODO 13+ сделать по figma
+class ActorAdapter : RecyclerView.Adapter<ActorsViewHolder>() {
+
+    private var actors = listOf<Actor>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorsViewHolder {
+        return ActorsViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.view_holder_actor, parent, false)
+        )
+    }
+
+    override fun onBindViewHolder(holder: ActorsViewHolder, position: Int) {
+        holder.onBind(actors[position])
+    }
+
+    override fun getItemCount(): Int = actors.size
+
+    fun bindActors(newActors: List<Actor>) {
+        actors = newActors
+        notifyDataSetChanged()
+    }
+}
+
+class ActorsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    private val avatar: ImageView = itemView.findViewById(R.id.iv_actor_avatar)
+    private val name: TextView = itemView.findViewById(R.id.tv_actor_name)
+
+    fun onBind(actor: Actor) {
+        Glide.with(context)
+            .load(actor.picture)
+            .apply(ActorsViewHolder.imageOption)
+            .into(avatar)
+
+        name.text = actor.name
+    }
+
+    companion object {
+        private val imageOption = RequestOptions()
+            .placeholder(R.drawable.ic_avatar_placeholder)
+            .fallback(R.drawable.ic_avatar_placeholder)
+
+    }
+}
+
+private val RecyclerView.ViewHolder.context
+    get() = this.itemView.context
