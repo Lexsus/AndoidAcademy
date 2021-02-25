@@ -12,10 +12,10 @@ import ru.lucass.data.Movie
 
 class MainActivity : AppCompatActivity(), Navigator {
 
-    private val fragmentMovieDetails by lazy{
+    private val fragmentMovieDetails by lazy {
         supportFragmentManager.findFragmentByTag(FRAGMENT_DETAIL_TAG) as FragmentMovieDetails
     }
-    private val fragmentMovieList by lazy{
+    private val fragmentMovieList by lazy {
         supportFragmentManager.findFragmentByTag(FRAGMENT_MOVIE_TAG) as FragmentMovieList
     }
 
@@ -27,17 +27,11 @@ class MainActivity : AppCompatActivity(), Navigator {
             supportFragmentManager.commit {
                 add(R.id.container, FragmentMovieList.newInstance(), FRAGMENT_MOVIE_TAG)
             }
-        } else {
-            
-
-        //    fragmentMovieDetails =
-        //        supportFragmentManager.findFragmentByTag(FRAGMENT_DETAIL_TAG) as? FragmentMovieDetails
-            Log.d("", "fragment create");
         }
     }
 
     override fun nextFragment(movie: Movie) {
-        Log.d("MainActivity", "nextFragment")
+        Log.d(TAG, "nextFragment")
         //перреход в новый фрагмент
         supportFragmentManager.commit {
             replace(R.id.container, FragmentMovieDetails.newInstance(movie), FRAGMENT_DETAIL_TAG)
@@ -64,5 +58,6 @@ class MainActivity : AppCompatActivity(), Navigator {
     companion object {
         const val FRAGMENT_MOVIE_TAG = "MovieListFragment"
         const val FRAGMENT_DETAIL_TAG = "MovieDetailFragment"
+        private const val TAG = "MainActivity"
     }
 }

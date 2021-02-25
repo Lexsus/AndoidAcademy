@@ -29,7 +29,7 @@
         android:textFontWeight="900"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/iv_location"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_films"

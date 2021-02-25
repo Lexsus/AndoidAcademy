@@ -13,13 +13,12 @@ class MovieViewModel : ViewModel() {
     private val _movie = MutableLiveData<List<Movie>>()
     val movies: LiveData<List<Movie>>
         get() {
-            loadData()
             return _movie
         }
     private val _movieDetail = MutableLiveData<Movie>()
     val movieDetails: LiveData<Movie> get() = _movieDetail
 
-    private fun loadData() {
+    fun loadMovies() {
         viewModelScope.launch {
             _movie.value = loadMovies(MovieApplication.getInstance())
         }
@@ -28,4 +27,6 @@ class MovieViewModel : ViewModel() {
     fun loadMovie(movie: Movie?) {
         _movieDetail.value = movie;
     }
+
+
 }

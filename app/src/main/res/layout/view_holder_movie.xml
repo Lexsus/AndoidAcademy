@@ -43,7 +43,7 @@
         android:textColor="@color/tagColor"
         android:textSize="8sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_age_rating"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/tv_age_rating"/>
 
     <TextView
         android:id="@+id/tv_film_name"
@@ -58,6 +58,6 @@
         android:textFontWeight="900"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_age_rating"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/tv_age_rating"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

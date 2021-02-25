@@ -49,7 +49,7 @@ class FilmsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         ageRating.text = film.minimumAge.toString() + "+"
         filmName.text = film.title
-        tagMovie.text = film.genres.joinToString { it -> it.name }
+        tagMovie.text = film.genres.joinToString { it.name }
     }
 }
 
